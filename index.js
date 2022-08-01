@@ -30,6 +30,11 @@ app.get('/foods/:id', (req, res) => {
     food ? res.status(200).send(food) : res.status(401).send("Item does not exist");
 })
 
+app.delete('/foods/:id', (req, res) => {
+    food = find(Foods, { id: +req.params.id })
+    Foods.delete(food)
+})
+
 app.post('/foods', jsonParser, (req, res) => {
     newItem = req.body;
     item = find(Foods, newItem);
